@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using ReactASPCrud.Services;
+using Uniti_Full_Stack_Development_Coding_Challenge.Services;
+
 namespace Uniti_Full_Stack_Development_Coding_Challenge
 {
     public class Startup
@@ -24,6 +27,15 @@ namespace Uniti_Full_Stack_Development_Coding_Challenge
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
+            services.AddSingleton<CustomerService>();
+            services.AddCors(o => o.AddPolicy("ReactPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .AllowCredentials();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +63,8 @@ namespace Uniti_Full_Stack_Development_Coding_Challenge
             {
                 endpoints.MapRazorPages();
             });
+
+            app.UseCors("ReactPolicy");
         }
     }
 }
