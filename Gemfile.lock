@@ -56,6 +56,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
     bcrypt (3.1.13)
     bindex (0.8.1)
     bootsnap (1.4.6)
@@ -63,8 +65,10 @@ GEM
     builder (3.2.4)
     byebug (11.1.3)
     concurrent-ruby (1.1.6)
+    connection_pool (2.2.3)
     crass (1.0.6)
     erubi (1.9.0)
+    execjs (2.7.0)
     ffi (1.13.0-x64-mingw32)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -89,6 +93,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9-x64-mingw32)
       mini_portile2 (~> 2.4.0)
+    public_suffix (4.0.5)
     puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.2)
@@ -122,7 +127,14 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.20.3, < 2.0)
+    rainbow (3.0.0)
     rake (13.0.1)
+    react_on_rails (11.1.4)
+      addressable
+      connection_pool
+      execjs (~> 2.5)
+      rails (>= 3.2)
+      rainbow (~> 3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0-x64-mingw32)
@@ -174,8 +186,10 @@ DEPENDENCIES
   byebug
   jbuilder (~> 2.7)
   jwt
+  mini_racer
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.1)
+  react_on_rails (= 11.1.4)
   sass-rails (>= 6)
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
