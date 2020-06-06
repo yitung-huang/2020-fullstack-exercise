@@ -13,11 +13,10 @@
 ActiveRecord::Schema.define(version: 2020_06_04_101319) do
 
   create_table "customers", force: :cascade do |t|
-    t.integer "id"
+    t.string "customer_id"
     t.string "name"
     t.integer "num_employees"
     t.string "tags"
-
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
