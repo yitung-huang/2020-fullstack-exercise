@@ -1,14 +1,22 @@
 <section>
   <div>
-    <h1>Customer Login</h1>
-    <div class="form__entry">
-      <p class="form__label">Username</p>
-      <input class="form__input" type="text"></input>
-    </div>
-    <div class="form__entry">
-      <p class="form__label">Password</p>
-      <input class="form__input" type="password"></input>
-    </div>
-    <a>Login</a>
+    <h1>User Login</h1>
+    <%= form_for(:auth, url: root_path, :html => {class: "login-form"}, local: true) do |form| %>
+
+      <div class="form__entry">
+        <%= form.label :username, :class => "form__entry" %>
+        <%= form.text_field :username, :class => "form__input" %>
+      </div>
+
+      <div class="form__entry">
+        <%= form.label :password, "Password", :class => "form__entry" %>
+        <%= form.password_field :password, :class => "form__input" %>
+      </div>
+
+      <div class="form__entry center">
+        <%= form.submit "Log in", class: "button button-add" %>
+      </div>
+
+    <% end %>
   </div>
 </section>
