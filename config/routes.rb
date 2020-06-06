@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root 'login#index'
+  root 'pages#login'
+  # 
+  # post "/login", to: "auth#login"
+  #
+  # resources :users, only: [:create]
 
   resources :customers
 
