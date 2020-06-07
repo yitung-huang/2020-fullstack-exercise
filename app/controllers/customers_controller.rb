@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   def index
     @customers = Customer.all
-    @resource_props = { name: "Stranger" }
+    @resource_props = { name: "Customers", resources: @customers }
   end
 
   # GET /customers/1

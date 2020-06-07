@@ -11,32 +11,46 @@ export default class ResourceFilterDisplay extends React.Component {
    */
   constructor(props) {
     super(props);
-
-    this.state = { name: this.props.name };
   }
 
-  updateName = (name) => {
-    this.setState({ name });
+  updateFilter = (filter) => {
+    // this.setState({ name });
   };
 
   render() {
     return (
       <div>
-        <h3>
-          Hello, {this.state.name}!
-        </h3>
-        <hr />
-        <form >
-          <label htmlFor="name">
-            Say hello to:
-          </label>
-          <input
-            id="name"
-            type="text"
-            value={this.state.name}
-            onChange={(e) => this.updateName(e.target.value)}
-          />
-        </form>
+        <h1>{this.props.name}</h1>
+        <div>
+          <form >
+            <input
+              id="name"
+              type="text"
+              onChange={(e) => this.updateFilter(e.target.value)}
+              placeholder="Filter by tag name ..."
+            />
+          </form>
+        </div>
+
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Number of Employees</th>
+            <th>Tags</th>
+          </tr>
+          {
+            this.props.resources.map(function(resource){
+              return (
+                <tr>
+                  <td>{resource.name}</td>
+                  <td>{resource.num_employees}</td>
+                  <td>{resource.tags.toString()}</td>
+                </tr>
+              )
+            })
+          }
+        </table>
+
       </div>
     );
   }
