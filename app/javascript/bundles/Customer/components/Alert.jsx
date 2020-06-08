@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Alert from 'react-bootstrap/Alert';
+import ReactAlert from 'react-bootstrap/Alert';
 
-export default class FilterDropdown extends React.Component {
+export default class Alert extends React.Component {
 
   constructor(props) {
     super(props);
@@ -11,9 +11,9 @@ export default class FilterDropdown extends React.Component {
 
   render() {
     return (
-      <Alert variant={this.props.variant}>
+      <ReactAlert variant={this.props.variant}>
         {this.props.message}
-      </Alert>
+      </ReactAlert>
     );
   }
 }
