@@ -1,6 +1,10 @@
 <section>
   <div>
     <h1>User Login</h1>
+    <% if session[:error] %>
+      <%= react_component("Alert", props: {message: session[:error], variant: "danger"}, prerender: false) %>
+    <% end %>
+
     <%= form_for(:auth, url: root_path, :html => {class: "login-form"}, local: true) do |form| %>
 
       <div class="form__entry">
