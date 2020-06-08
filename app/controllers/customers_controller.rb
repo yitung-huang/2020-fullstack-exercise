@@ -4,8 +4,14 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.json
   def index
-    @customers = Customer.all
-    @resource_props = { name: "Customers", resources: @customers }
+    if logged_in?
+      session[:error] = nil
+      @customers = Customer.all
+      @resource_props = { name: "Customers", resources: @customers }
+    else
+      session[:error] = "Sorry, you must be logged in to see this page."
+      redirect_to root_path
+    end
   end
 
   # GET /customers/1
