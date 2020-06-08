@@ -3,6 +3,7 @@ import React from 'react';
 
 import FilterDropdown from './FilterDropdown';
 import FilterInput from './FilterInput';
+import Pagination from './Pagination';
 
 /* Not sure why string arrays are passed as a string,
  * so this is a helper function to convert the string
@@ -102,7 +103,7 @@ export default class ResourceFilterDisplay extends React.Component {
             })
           }
         </table>
-
+        <Pagination numPages={11}/>
       </div>
     );
   }
