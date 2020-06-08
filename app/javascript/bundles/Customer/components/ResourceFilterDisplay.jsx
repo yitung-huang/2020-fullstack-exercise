@@ -13,11 +13,13 @@ let stringToArray = (string) => {
 
 const FILTER_DROPDOWN_PROPS = {
   items: [
+    "Any",
     "1-10 employees",
     "11-50 employees",
     "50+ employees"
   ],
   conditions: [
+    (employees) => { return true; },
     (employees) => { return employees >=  1 && employees <= 10; },
     (employees) => { return employees >= 11 && employees <= 50; },
     (employees) => { return employees >  50; }
