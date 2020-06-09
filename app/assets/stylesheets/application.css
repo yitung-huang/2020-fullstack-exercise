@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+   margin: 0;
+   line-height: 1.5;
+ }
+
+ p {
+   margin: 0 !important;
+   font-size: 1.1rem;
+ }
+
+section {
+  padding: 1em 1.25em;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+/* React Bootstrap has entry .container */
+.my__container {
+  margin: 0 auto;
+  padding: 0.5em 1em;
+  background: #9FCCFF;
+  border-radius: 4px;
+  border: 1px solid #4F88DD;
+}
+
+@media (min-width: 800px){
+  .my__container {
+    padding: 1em 3em;
+  }
+}

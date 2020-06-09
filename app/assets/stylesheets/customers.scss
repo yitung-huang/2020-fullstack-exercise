@@ -1,3 +1,60 @@
 // Place all the styles related to the Customers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.customer-list__heading {
+  margin: 0 0 0.5em !important;
+}
+
+.customer-list__container {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+// Filter container:
+//  *  filter by tags input
+//  *  filter by number of employees dropdown menu
+.filter__container {
+  margin-bottom: 1em;
+}
+
+@media (min-width: 800px){
+  .filter__container {
+    display: flex;
+  }
+
+  .filter__container > div {
+    margin-right: 2em;
+    display: flex;
+    align-items: center;
+  }
+
+  .filter__container > div > * {
+    margin-left: 0.5em;
+  }
+}
+
+.filter__container > div {
+  margin-bottom: 1em;
+}
+
+.filter__container .form__label {
+  margin-bottom: 0.5em !important;
+}
+
+// Sortable table
+.customer-list__container table {
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (min-width: 800px){
+  width: 90%;
+}
+
+// Pagination
+.pagination {
+  // Defined as flex in React Bootstrap's CSS files
+  justify-content: center;
+  margin-top: 1em;
+}

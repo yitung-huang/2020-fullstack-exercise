@@ -1,0 +1,20 @@
+// Sortable table
+table, th, td {
+  border: 1px black solid;
+}
+
+table {
+  border-radius: 4px !important;
+}
+
+th, td {
+  padding: 0.5em 1em !important;
+}
+
+th {
+  background: #4F88DD;
+}
+
+td {
+  background: white;
+}

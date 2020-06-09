@@ -108,14 +108,19 @@ export default class ResourceFilterDisplay extends React.Component {
   render() {
     let self = this;
     return (
-      <div>
-        <h1>{this.props.name}</h1>
-        <div>
-          <FilterInput placeholder="Filter by tag name ..."
-                       callback={this.setFilterTags} />
-
-          <FilterDropdown items={FILTER_DROPDOWN_PROPS.items}
-                          callback={this.setFilterNumEmployees} />
+      <div className="customer-list__container my__container">
+        <h1 className="customer-list__heading">{this.props.name}</h1>
+        <div className="filter__container">
+          <div className="form__entry">
+            <p className="form__label">Filter by tags: </p>
+            <FilterInput placeholder="Filter by tag name ..."
+                         callback={this.setFilterTags} />
+          </div>
+          <div className="form__entry">
+            <p className="form__label">Filter by number of employees:</p>
+            <FilterDropdown items={FILTER_DROPDOWN_PROPS.items}
+                            callback={this.setFilterNumEmployees} />
+          </div>
         </div>
         <SortableTable resources={this.state.filteredResources} map={TABLE_COLUMN_MAP}/>
         <Pagination numPages={11}/>

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
-<%= react_component("ResourceFilterDisplay", props: @resource_props, prerender: false) %>
-
-<%= link_to 'New Customer', new_customer_path %>
+<section class="section-customers">
+  <p id="notice"><%= notice %></p>
+  <%= react_component("ResourceFilterDisplay", props: @resource_props, prerender: false) %>
+</section>
