@@ -1,51 +1,59 @@
-# Uniti Full Stack Development Coding Challenge
+# RE: Uniti Full Stack Development Coding Challenge
 
 ## Introduction
 
-Thank you for your interest in working with us at Uniti!
-We all love working with talented co-workers. This challenge is intended to help us evaluate where you are in your programming career so we can determine how you might fit within our company.
+In the end I've chosen to use Ruby on Rails so I don't lose time on learning the syntax for C#, I hope that is okay with you!
 
-## The Challenge
+### Details
+*  Ruby version 2.6.5
+*  Frontend: React
 
-### Background
+### Setting up
+To run the test project on your machine, please clone this repository and move into the `2020-fullstack-exercise` folder.
 
-In order to assess your ability to develop backend and frontend applications, we ask that you develop a RESTful API in C# .Net Core, with an accompanying React or Vue Frontend.
+Run
+```
+bundle install
+```
+to install the Ruby Gems inside the `Gemfile`.
 
-### Setup
+Next, run
+```
+rails db:migrate
+```
+to create the database required for the test project.
 
-1. You must first fork this repo. If you do not have a GitHub account, you will need to first sign up in order to fork it.
-2. Clone your forked repo and develop the application according to the requirements below.
-3. Once you think you have completed the exercise to a satisfactory level, ensure all of your code has been committed to your forked repo and issue a Pull Request back to the Uniti repo.
+### Database
 
-### Requirements
+Sorry I didn't make a parser to parse `exercise.yaml`. You will have to add the entries by using the rails console:
 
-You have been tasked to build a HTTP RESTful API using C# .Net Core, with an Recact or Vue frontend.
+```
+rails console
+User.create({username: "thomas", password: "banana"})
+Customer.create({customer_id: "f312b57e-a655-4a35-b27f-416c464c3730", num_employees: 4, name: "Fancy Pants", tags: ["commercial", "clothing", "pants"]})
 
-#### Backend
+```
 
-All data is to be sourced from `exercise.yaml` - no need to set up a real database.
+### Running the server
+Congratulations! You're now ready to go!
 
-Develop an API in C# .Net Core with 2 endpoints:
-1. Authorizes usernames and passwords - `auth` key in `exercise.yaml`, and returns a JWT to authenticate against the customer endpoint
-2. Shows customer data - `customers` key in `exercise.yaml`
+Simply run
+```
+rails server
+```
+inside the `2020-fullstack-exercise` folder to start your server.
 
-#### Frontend
 
-Develop an React or Vue application which has two parts:
-1. A login screen which authorizes via the authorization endpoint in the backend
-2. Once authenticated, shows a table of customers with the data retrieved from the backend's customer endpoint.
+### Notes
 
-The customer table has the following requirements:
-- UI layout must be based on `ui.png`
-- it must implement paging
-- it must provide filters on the following:
-  - tags
-  - number of employees - 1-10 employees, 11-50 employees, 50+ employees
+Checklist on the things covered:
+#### Authorisation
+*  Authorizes usernames and passwords
+*  ...return a JWT to authenticate against the customer endpoint: I have implemented JWT tokens but I'm not sure where to return it.
+*  Added error message when credentials are invalid
+*  Added error message when trying to access the customer list without being authorised
 
-As well as the filters, each column must be able to be reordered by clicking on the appropriate heading (ascending/descending)
-
-The customer table must not be viewable unless the user is authenticated.
-
-## Questions?
-
-If you have any questions around the implementation of this exercise, please open an Issue on the parent repository at https://github.com/uniti-wireless
+#### Displaying list of customers
+*  Implemented based on given `ui.png` using React Bootstrap
+*  Wasn't sure how many entries to display per page so I added a dropdown for the user to choose how many entries they want to see per page
+*  Added labels in front of the tag and number of employees filter
