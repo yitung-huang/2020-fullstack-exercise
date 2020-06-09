@@ -15,7 +15,7 @@
 //  *  filter by tags input
 //  *  filter by number of employees dropdown menu
 .filter__container {
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 @media (min-width: 800px){
@@ -53,8 +53,23 @@
 }
 
 // Pagination
+.paging-control__container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 1em auto 0;
+}
+
+.paging-control__container .form__entry {
+  display: flex;
+  align-items: center;
+}
+
+.paging-control__container > .form__entry > * {
+  margin-left: 0.5em;
+}
+
 .pagination {
   // Defined as flex in React Bootstrap's CSS files
   justify-content: center;
-  margin-top: 1em;
 }

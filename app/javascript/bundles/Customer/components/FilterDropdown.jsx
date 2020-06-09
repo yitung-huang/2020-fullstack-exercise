@@ -26,7 +26,7 @@ export default class FilterDropdown extends React.Component {
     let self = this;
     return (
       <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
+        <Dropdown.Toggle variant="secondary" className="my__dropdown">
           {this.state.selected}
         </Dropdown.Toggle>
 

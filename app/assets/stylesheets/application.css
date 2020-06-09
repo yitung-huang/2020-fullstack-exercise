@@ -24,6 +24,10 @@
    font-size: 1.1rem;
  }
 
+ul {
+  margin-bottom: 0 !important;
+}
+
 section {
   padding: 1em 1.25em;
 }
@@ -46,4 +50,13 @@ section {
   .my__container {
     padding: 1em 3em;
   }
+}
+
+.my__dropdown {
+  background: white !important;
+  color: black !important;
+}
+
+.my__dropdown:hover {
+  border: 1px solid #4F88DD !important;
 }
