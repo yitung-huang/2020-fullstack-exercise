@@ -59,3 +59,6 @@ Checklist on the things covered:
 *  Implemented based on given `ui.png` using React Bootstrap
 *  Wasn't sure how many entries to display per page so I added a dropdown for the user to choose how many entries they want to see per page
 *  Added labels in front of the tag and number of employees filter
+
+#### Responsive-ness
+I have roughly made the pages responsive on Google Chrome, but did not check it on other browsers. Feel free to try to resize it :)
