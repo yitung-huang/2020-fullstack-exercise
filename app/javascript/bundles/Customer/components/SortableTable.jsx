@@ -86,6 +86,7 @@ export default class SortableTable extends React.Component {
 
   render() {
     let self = this;
+    let entries = this.state.sortedResources.slice(0, this.props.maxEntries);
     return (
       <table className="table__sortable">
         <tr>
@@ -96,7 +97,7 @@ export default class SortableTable extends React.Component {
           }
         </tr>
         { // Loop through each item
-          this.state.sortedResources.map((resource, index) => {
+          entries.map((resource, index) => {
             return (
               <tr key={index}>
                 { // Loop through each mapped attribute

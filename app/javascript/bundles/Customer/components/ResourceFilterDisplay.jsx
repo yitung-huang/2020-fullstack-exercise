@@ -44,6 +44,8 @@ const TABLE_COLUMN_MAP = [
   { label: "Tags", name: "tags" }
 ];
 
+const NUM_DISPLAY_ENTRIES_OPTIONS = [ 10, 25, 50 ];
+
 export default class ResourceFilterDisplay extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired, // this is passed from the Rails view
@@ -65,11 +67,13 @@ export default class ResourceFilterDisplay extends React.Component {
       filterNumEmployees: FILTER_DROPDOWN_PROPS.conditions[0],
       filterTags: "",
       filteredResources: resources,
-      resources: resources
+      resources: resources,
+      numDisplayEntries: NUM_DISPLAY_ENTRIES_OPTIONS[0]
     };
 
     this.setFilterNumEmployees = this.setFilterNumEmployees.bind(this);
     this.setFilterTags = this.setFilterTags.bind(this);
+    this.setNumDisplayEntries = this.setNumDisplayEntries.bind(this);
 
     this.updateFilteredResources = this.updateFilteredResources.bind(this);
   }
@@ -105,8 +109,14 @@ export default class ResourceFilterDisplay extends React.Component {
     this.setState({filteredResources: filteredResources});
   };
 
+  setNumDisplayEntries = (key) => {
+    this.setState({ numDisplayEntries: parseInt(NUM_DISPLAY_ENTRIES_OPTIONS[key]) });
+  };
+
   render() {
     let self = this;
+    let num_pages = Math.ceil(this.state.filteredResources.length / this.state.numDisplayEntries);
+
     return (
       <div className="customer-list__container my__container">
         <h1 className="customer-list__heading">{this.props.name}</h1>
@@ -122,8 +132,16 @@ export default class ResourceFilterDisplay extends React.Component {
                             callback={this.setFilterNumEmployees} />
           </div>
         </div>
-        <SortableTable resources={this.state.filteredResources} map={TABLE_COLUMN_MAP}/>
-        <Pagination numPages={11}/>
+        <SortableTable resources={this.state.filteredResources} map={TABLE_COLUMN_MAP} maxEntries={ this.state.numDisplayEntries }/>
+
+        <div className="paging-control__container">
+          <div className="form__entry">
+            <p className="form__label">Show:</p>
+            <FilterDropdown items={ NUM_DISPLAY_ENTRIES_OPTIONS }
+                            callback={this.setNumDisplayEntries} />
+          </div>
+          <Pagination numPages={ num_pages }/>
+        </div>
       </div>
     );
   }

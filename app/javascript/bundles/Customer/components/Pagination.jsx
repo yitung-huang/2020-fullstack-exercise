@@ -29,6 +29,12 @@ export default class Pagination extends React.Component {
     this.renderPageButtons();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.numPages !== this.props.numPages){
+      this.renderPageButtons();
+    }
+  }
+
   renderPageButtons = () => {
     let display = [];
 
