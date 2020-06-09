@@ -68,12 +68,14 @@ export default class ResourceFilterDisplay extends React.Component {
       filterTags: "",
       filteredResources: resources,
       resources: resources,
-      numDisplayEntries: NUM_DISPLAY_ENTRIES_OPTIONS[0]
+      numDisplayEntries: NUM_DISPLAY_ENTRIES_OPTIONS[0],
+      currentPage: 1
     };
 
     this.setFilterNumEmployees = this.setFilterNumEmployees.bind(this);
     this.setFilterTags = this.setFilterTags.bind(this);
     this.setNumDisplayEntries = this.setNumDisplayEntries.bind(this);
+    this.setCurrentPage = this.setCurrentPage.bind(this);
 
     this.updateFilteredResources = this.updateFilteredResources.bind(this);
   }
@@ -110,7 +112,11 @@ export default class ResourceFilterDisplay extends React.Component {
   };
 
   setNumDisplayEntries = (key) => {
-    this.setState({ numDisplayEntries: parseInt(NUM_DISPLAY_ENTRIES_OPTIONS[key]) });
+    this.setState({ numDisplayEntries: parseInt(NUM_DISPLAY_ENTRIES_OPTIONS[key]), currentPage: 1 });
+  };
+
+  setCurrentPage = (page) => {
+    this.setState({ currentPage: page });
   };
 
   render() {
@@ -132,15 +138,19 @@ export default class ResourceFilterDisplay extends React.Component {
                             callback={this.setFilterNumEmployees} />
           </div>
         </div>
-        <SortableTable resources={this.state.filteredResources} map={TABLE_COLUMN_MAP} maxEntries={ this.state.numDisplayEntries }/>
+        <SortableTable resources={this.state.filteredResources}
+                       map={TABLE_COLUMN_MAP}
+                       maxEntries={ this.state.numDisplayEntries }
+                       entryStart={ (this.state.currentPage - 1) * this.state.numDisplayEntries }/>
 
         <div className="paging-control__container">
           <div className="form__entry">
             <p className="form__label">Show:</p>
             <FilterDropdown items={ NUM_DISPLAY_ENTRIES_OPTIONS }
-                            callback={this.setNumDisplayEntries} />
+                            callback={ this.setNumDisplayEntries } />
           </div>
-          <Pagination numPages={ num_pages }/>
+          <Pagination numPages={ num_pages }
+                      callback={ this.setCurrentPage }/>
         </div>
       </div>
     );

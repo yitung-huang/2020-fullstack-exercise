@@ -98,7 +98,8 @@ export default class SortableTable extends React.Component {
 
   render() {
     let self = this;
-    let entries = this.state.sortedResources.slice(0, this.props.maxEntries);
+    let start = this.props.entryStart;
+    let entries = this.state.sortedResources.slice(start, start + this.props.maxEntries);
     return (
       <table className="table__sortable">
         <tr>

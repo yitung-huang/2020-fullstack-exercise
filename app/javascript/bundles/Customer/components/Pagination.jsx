@@ -31,6 +31,7 @@ export default class Pagination extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.numPages !== this.props.numPages){
+      this.setState({ currentPage: 1});
       this.renderPageButtons();
     }
   }
@@ -52,7 +53,9 @@ export default class Pagination extends React.Component {
       display = [center-2, center-1, center, center+1, center+2];
     }
 
-    this.setState({ display: display });
+    this.setState({ display: display }, () => {
+      this.props.callback( this.state.currentPage );
+    });
   };
 
   goToPage = (event) => {
