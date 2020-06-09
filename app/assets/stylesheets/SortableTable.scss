@@ -15,6 +15,10 @@ th {
   background: #4F88DD;
 }
 
+th:hover {
+  cursor: pointer;
+}
+
 td {
   background: white;
 }

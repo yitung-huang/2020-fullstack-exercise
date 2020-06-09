@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+let SYMBOL = {
+  ASCENDING: '↓',
+  DESCENDING: '↑'
+};
+
 let SORT_BY = ( attribute ) => {
   return {
     ASCENDING: (a, b) => {
@@ -64,7 +69,14 @@ export default class SortableTable extends React.Component {
   }
 
   sortColumn(event) {
-    let column_name = event.target.innerText;
+    let target = event.target;
+    if (target.tagName == "TH"){
+      target = target.children[0];
+    } else {
+      target = target.parentElement.children[0];
+    }
+
+    let column_name = target.innerText;
     let attribute_name = "";
     for (let i = 0; i < this.props.map.length; i++){
       if (this.props.map[i].label == column_name){
@@ -92,7 +104,12 @@ export default class SortableTable extends React.Component {
         <tr>
           { // Loop through the column names
             this.props.map.map((object, index) => {
-              return (<th key={index} onClick={self.sortColumn}>{ object.label }</th>);
+              return (
+                <th key={index} onClick={self.sortColumn}>
+                  <span>{object.label}</span>
+                  <span>{"   " + SYMBOL[ self.state.sortOrder[ object.name ] ]}</span>
+                </th>
+              );
             })
           }
         </tr>
@@ -106,7 +123,7 @@ export default class SortableTable extends React.Component {
 
                     // If content is an array, convert to string first
                     if (typeof value == "object" && value.length){
-                      return (<td>{ arrayToString( value ) }</td>);
+                      return (<td>{ arrayToString( value )}</td>);
                     } else {
                       return (<td>{ value }</td>);
                     }
