@@ -25,7 +25,9 @@ to create the database required for the test project.
 
 ### Database
 
-Sorry I didn't make a parser to parse `exercise.yaml`. You will have to add the entries by using the rails console:
+I have setup the program to read from `exercise.yaml` on server start. Feel free to substitute other `yaml` files by changing the filename to be loaded in `app/models/customer.rb` and `app/models/user.rb`!
+
+You can also choose to add the entries by using the rails console:
 
 ```
 rails console
