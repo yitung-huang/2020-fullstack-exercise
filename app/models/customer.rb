@@ -6,6 +6,4 @@ class Customer < ApplicationRecord
   customers.each do | customer |
     Customer.create( customer_id: customer["id"], num_employees: customer["num_employees"], name: customer["name"], tags: customer["tags"] )
   end
-
-  byebug
 end

@@ -8,6 +8,4 @@ class User < ApplicationRecord
   users.each do | user |
     User.create(username: user["username"], password: user["password"])
   end
-
-  byebug
 end
